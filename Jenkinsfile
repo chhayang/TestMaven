@@ -16,12 +16,12 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
-   stage('Results') {
+   stage('Generated Artifacts') {
     
       archiveArtifacts 'target/*.war'
    }
    
-   stage('Deploy the artifact') {
+   stage('Deployment on Destination Server') {
     
     sh label: '', script: '''pwd
                             sudo /Users/tu455sq/Documents/Scripts/deploy.sh
